@@ -33,8 +33,8 @@ The **colored point cloud map (left)** and the **x8 Real-Time Performance** (rig
 </div>
 
 **New Features:**
-1. The **Sweep Reconstruction** module aligns the end timestamp of reconstructed sweep to the timestamp of captured image. Thus, the state of all image-captured moments can be solved by the more reliable LIO module instead of the hypersensitive VIO module.
 
+1. The **Sweep Reconstruction** module aligns the end timestamp of reconstructed sweep to the timestamp of captured image. Thus, the state of all image-captured moments can be solved by the more reliable LIO module instead of the hypersensitive VIO module.
 2. In **SR-LIVO**, we utilize an ESIKF to solve state in LIO module, and utilize an ESIKF to optimize camera parameters in vision module respectively.
 
 ## Installation
@@ -44,7 +44,7 @@ The **colored point cloud map (left)** and the **x8 Real-Time Performance** (rig
 > GCC >= 7.5.0
 >
 > Cmake >= 3.16.0
-> 
+>
 > [Eigen3](http://eigen.tuxfamily.org/index.php?title=Main_Page) >= 3.3.4
 >
 > [OpenCV](https://github.com/opencv/opencv) >= 3.3
@@ -59,9 +59,9 @@ The **colored point cloud map (left)** and the **x8 Real-Time Performance** (rig
 
 ##### Have Tested On:
 
-| OS    | GCC  | Cmake | Eigen3 | OpenCV | PCL | Ceres |
-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| Ubuntu 20.04 | 9.4.0  | 3.16.3 | 3.3.7 | 4.2.0 | 1.10.0 | 1.14 |
+|      OS      |  GCC  | Cmake | Eigen3 | OpenCV |  PCL  | Ceres |
+| :----------: | :---: | :----: | :----: | :----: | :----: | :---: |
+| Ubuntu 20.04 | 9.4.0 | 3.16.3 | 3.3.7 | 4.2.0 | 1.10.0 | 1.14 |
 
 ### 2. Create ROS workspace
 
@@ -77,9 +77,12 @@ cd SR-LIVO/src
 
 ```bash
 git clone https://github.com/ZikangYuan/sr_livo.git
+git clone https://github.com/Livox-SDK/livox_ros_driver.git
+
 cd ..
 catkin_make
 ```
+
 ## Run on Public Datasets
 
 Noted:
@@ -92,7 +95,7 @@ C. **Please create a folder named "output" before running.** When **SR-LIVO** is
 
 D. we store the pose ground truth of the *NTU_VIRAL* dataset used by us as [TUM](https://vision.in.tum.de/data/datasets/rgbd-dataset) format. Please download from [Google drive](https://drive.google.com/drive/folders/1WnvzUzP_s70p4myPf5fsP1Jtr_62PnL1).
 
-###  1. Run on [*R3Live_Dataset*](https://github.com/ziv-lin/r3live_dataset)
+### 1. Run on [*R3Live_Dataset*](https://github.com/ziv-lin/r3live_dataset)
 
 Before running, please type the following command to examine the image message type of ROS bag file:
 
@@ -115,13 +118,14 @@ cd SR-LIVO
 source devel/setup.bash
 roslaunch sr_livo livo_r3live_compressed.launch
 ```
+
 Then open the terminal in the path of the bag file, and type:
 
 ```bash
 rosbag play SEQUENCE_NAME.bag --clock -d 1.0
 ```
 
-###  2. Run on [*NTU_VIRAL*](https://ntu-aris.github.io/ntu_viral_dataset/)
+### 2. Run on [*NTU_VIRAL*](https://ntu-aris.github.io/ntu_viral_dataset/)
 
 Please go to the workspace of **SR-LIVO** and type:
 
